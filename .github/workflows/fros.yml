@@ -12,11 +12,13 @@ on:
       source_branch:
         description: "Select the source branch"
         required: false
-        default: "Lienol-master"
+        default: "openwrt-main"
         type: choice
         options:
-          - Lienol-master
           - openwrt-main
+          - lede-master
+          - immortalwrt-master
+          - Lienol-master
       
 env:
   FEEDS_CONF: config/${{ inputs.source_branch }}/feeds.conf.default
@@ -68,13 +70,13 @@ jobs:
               REPO_BRANCH="main"
               TAGS_NAME="fros"
           elif [[ "${{ inputs.source_branch }}" == *"lede"* ]]; then
-              REPO_URL="https://github.com/yqf-java/lede"
-              REPO_BRANCH="master"
-              TAGS_NAME="lede"
+              REPO_URL="https://github.com/openfros/fros"
+              REPO_BRANCH="main"
+              TAGS_NAME="fros"
           elif [[ "${{ inputs.source_branch }}" == *"immortalwrt"* ]]; then
-              REPO_URL="https://github.com/immortalwrt/immortalwrt"
-              REPO_BRANCH="master"
-              TAGS_NAME="immortalwrt"
+              REPO_URL="https://github.com/openfros/fros"
+              REPO_BRANCH="main"
+              TAGS_NAME="fros"
           elif [[ "${{ inputs.source_branch }}" == *"Lienol"* ]]; then
               REPO_URL="https://github.com/openfros/fros"
               REPO_BRANCH="main"
